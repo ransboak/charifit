@@ -49,11 +49,7 @@
 
                     <nav id="mobile-menu">
                         <ul class="main-menu">
-                            <li><a href="#">home <span><i class="fas fa-angle-down"></i></span></a>
-                                <ul class="submenu">
-                                    <li><a href="index.html">home-1</a></li>
-                                    <li><a href="home2.html">home-2</a></li>
-                                </ul>
+                            <li><a href="#">home</a>
                             </li>
                             <li><a href="about.html">about</a></li>
                             <li><a href="#">Events <span><i class="fas fa-angle-down"></i></span></a>
@@ -71,7 +67,7 @@
                             <li><a href="#">pages <span><i class="fas fa-angle-down"></i></span></a>
                                 <ul class="submenu">
                                     <li><a href="donation-list.html">donation list</a></li>
-                                    <li><a href="donation-single.html">donation single</a></li>
+                                    <li><a href="{{url('/donation')}}">donation single</a></li>
                                     <li><a href="faq.html">faq</a></li>
                                     <li><a href="project-list.html">project list</a></li>
                                     <li><a href="project-single.html">project single</a></li>
@@ -115,7 +111,7 @@
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                 <ul class="nav-right-btn">
-                    <li><a href="donation-single.html">Donation</a></li>
+                    <li><a href="{{url('/donation')}}">Donation</a></li>
                 </ul>
             </div>
         </div>

@@ -22,4 +22,14 @@ class PageController extends Controller
     public function blogPage(){
         return view('frontend.pages.blog');
     }
+
+    //ABOUT US PAGE
+    public function aboutPage(){
+        return view('frontend.pages.about');
+    }
+
+    //SINGLE DONATION PAGE
+    public function singleDonationPage(){
+        return view('frontend.pages.donation-single');
+    }
 }
