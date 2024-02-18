@@ -6,10 +6,10 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets1/images/logo.svg" alt="" height="22">
+                        <img src="{{asset('assets1/images/logo.svg')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets1/images/logo-dark.png" alt="" height="17">
+                        <img src="{{asset('assets/images/logo.png')}}" alt="" height="25">
                     </span>
                 </a>
 
@@ -18,7 +18,7 @@
                         <img src="assets1/images/logo-light.svg" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets1/images/logo-light.png" alt="" height="19">
+                        <img src="{{asset('assets/images/logo.png')}}" alt="" height="40">
                     </span>
                 </a>
             </div>
@@ -369,17 +369,31 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="assets1/images/users/avatar-1.jpg"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">Henry</span>
+                    <span class="d-none d-xl-inline-block ml-1">{{Auth::user()->firstname}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="index.html#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{route('profile.edit')}}"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
                     <a class="dropdown-item" href="index.html#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
                     <a class="dropdown-item d-block" href="index.html#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                     <a class="dropdown-item" href="index.html#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="index.html#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    {{-- <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form> --}}
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    <a class="dropdown-item text-danger" href="{{route('logout')}}" onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                    <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    </form>
                 </div>
             </div>
 
