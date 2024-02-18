@@ -23,9 +23,27 @@ Route::get('/home', [PageController::class, 'index'])->name('home');
 
 Route::get('/blog', [PageController::class, 'blogPage'])->name('blog');
 
-Route::get('/about', [PageController::class, 'aboutPage'])->name('blog');
+Route::get('/about', [PageController::class, 'aboutPage'])->name('about');
+
+Route::get('/donations', [PageController::class, 'donationsPage'])->name('donations');
 
 Route::get('/donation', [PageController::class, 'singleDonationPage'])->name('donation');
+
+Route::get('/blog-single', [PageController::class, 'singleBlogPage'])->name('single-blog');
+
+Route::get('/projects', [PageController::class, 'projectsPage'])->name('projects');
+
+Route::get('/project', [PageController::class, 'singleProjectPage'])->name('project');
+
+Route::get('/events', [PageController::class, 'eventsPage'])->name('events');
+
+Route::get('/event', [PageController::class, 'singleEventPage'])->name('event');
+
+Route::get('/mission', [PageController::class, 'missionPage'])->name('mission');
+
+Route::get('/team', [PageController::class, 'teamPage'])->name('team');
+
+Route::get('/faqs', [PageController::class, 'faqsPage'])->name('faqs');
 
 
 
