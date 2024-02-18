@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'firstname',
+        'lastname',
         'email',
         'password',
     ];
@@ -43,7 +45,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function usersCoolPosts(){
-        return $this->hasMany(Post::class, 'user_id');
-    }
 }
