@@ -11,13 +11,7 @@ class PageController extends Controller
         $user = Auth::user();
 
         If($user){
-            $userrole = $user->role;
-
-            if($userrole == 'admin'){
-                return view('home');
-            }elseif($userrole == 'user'){
-                return view('dashboard');
-            }
+            return view('backend.pages.index');
         }else{
             return redirect()->back();
         }
