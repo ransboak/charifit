@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+    //DASHBOARD
     public function index(){
         $user = Auth::user();
 
@@ -15,5 +16,10 @@ class PageController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+
+    //BLOG PAGE
+    public function blogPage(){
+        return view('frontend.pages.blog');
     }
 }

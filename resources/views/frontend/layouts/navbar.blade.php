@@ -64,7 +64,7 @@
                             </li>
                             <li><a href="#">blog <span><i class="fas fa-angle-down"></i></span></a>
                                 <ul class="submenu">
-                                    <li><a href="blog.html">blog</a></li>
+                                    <li><a href="{{url('/blog')}}">blog</a></li>
                                     <li><a href="blog-single.html">blog single</a></li>
                                 </ul>
                             </li>

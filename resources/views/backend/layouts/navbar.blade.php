@@ -4,21 +4,21 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="{{url('/')}}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{asset('assets1/images/logo.svg')}}" alt="" height="22">
+                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{asset('assets/images/logo.png')}}" alt="" height="25">
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="{{url('/')}}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets1/images/logo-light.svg" alt="" height="22">
+                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="35">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo.png')}}" alt="" height="40">
+                        <img src="{{asset('assets/images/logo-white.png')}}" alt="" height="40">
                     </span>
                 </a>
             </div>

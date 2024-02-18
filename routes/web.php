@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/home', [PageController::class, 'index'])->name('home');
 
+Route::get('/blog', [PageController::class, 'blogPage'])->name('blog');
 Route::get('/dashboard', function () {
     return view('backend.pages.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
