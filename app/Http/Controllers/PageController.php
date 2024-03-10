@@ -18,6 +18,16 @@ class PageController extends Controller
         }
     }
 
+
+
+    //SINGLE EVENT PAGE
+    public function dashBlogsPage(){
+        return view('backend.pages.blog');
+    }
+
+
+
+    //FRONTEND
     //BLOG PAGE
     public function blogPage(){
         return view('frontend.pages.blog');
@@ -74,4 +84,8 @@ class PageController extends Controller
     public function singleEventPage(){
         return view('frontend.pages.event-single');
     }
+
+
+
+
 }

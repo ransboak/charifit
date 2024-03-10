@@ -47,6 +47,13 @@
                 </li>
 
                 <li>
+                    <a href="{{route('dashBlogsPage')}}" class=" waves-effect">
+                        <i class="bx bx-calendar"></i>
+                        <span>Blogs</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="chat.html" class=" waves-effect">
                         <i class="bx bx-chat"></i>
                         <span class="badge badge-pill badge-success float-right">New</span>
