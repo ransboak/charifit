@@ -30,7 +30,7 @@ Route::get('/donations', [PageController::class, 'donationsPage'])->name('donati
 
 Route::get('/donation', [PageController::class, 'singleDonationPage'])->name('donation');
 
-Route::get('/blog-single', [PageController::class, 'singleBlogPage'])->name('single-blog');
+Route::get('blog-single/{id}', [PageController::class, 'singleBlogPage'])->name('single-blog');
 
 Route::get('/projects', [PageController::class, 'projectsPage'])->name('projects');
 

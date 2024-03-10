@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +14,13 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'thumbnail' => 'mimes:png,jpg'
+            'thumbnail' => 'mimes:png,jpg,webp'
         ]);
 
         $thumbnail = time().'_1.'.$request->thumbnail->extension();
         $request->thumbnail->move(public_path('uploads'), $thumbnail);
 
-        $blog = User::create([
+        $blog = Blog::create([
             'title' => $request->title,
             'category' => $request->category,
             'body' => $request->body,
@@ -27,8 +28,6 @@ class BlogController extends Controller
             'video_link' => $request->video_link,
             'thumbnail' => $thumbnail,
         ]);
-
-        return $blog;
 
         if($blog){
             return redirect()->back()->with('success', 'Post added successfully.');

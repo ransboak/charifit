@@ -75,34 +75,24 @@
 
 
                                                 <tbody>
+                                                    @foreach ($blogs as $blog )
+
+
                                                 <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
+                                                    <td>{{$blog->user->firstname}} {{$blog->user->lastname}}</td>
+                                                    <td>{{$blog->title}}</td>
+                                                    <td>{{substr(strip_tags($blog->body), 0, 30)}}...</td>
+                                                    <td>{{$blog->category}}</td>
+                                                    <td>
+                                                        @if ($blog->video_link)
+                                                        {{$blog->video_link}}
+                                                        @else
+                                                        Null
+                                                        @endif
+                                                    </td>
+                                                    <td>{{\Carbon\Carbon::parse($blog->created_at)->format('jS F, Y (H:i)')}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
-
-
-
-
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                             </div>
@@ -148,7 +138,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Body</label>
-                                    <input id="summernote" type="text" name="body"></input>
+                                    <textarea id="summernote" name="body"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Video Link</label>
