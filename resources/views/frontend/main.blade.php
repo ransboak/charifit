@@ -62,7 +62,7 @@
     <script src="assets/js/vendor/jquery-ui.js"></script>
     <script src="assets/js/vendor/isotope.min.js"></script>
     <script src="assets/js/vendor/countrySelect.js"></script>
-    <script src="assets/js/vendor/countdown.js"></script>
+    {{-- <script src="assets/js/vendor/countdown.js"></script> --}}
     <script src="assets/js/vendor/progress-bar.js"></script>
     <script src="assets/js/vendor/jquery.meanmenu.js"></script>
     <script src="assets/js/main.js"></script>

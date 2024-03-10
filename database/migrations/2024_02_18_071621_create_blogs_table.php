@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail');
+            $table->string('category')->nullable();
+            $table->string('video_link')->nullable();
             $table->foreignId('author_id')->constrained();
             $table->timestamps();
         });

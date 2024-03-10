@@ -51,7 +51,7 @@
                         <ul class="main-menu">
                             <li><a href="{{url('/')}}">home</a>
                             </li>
-                            <li><a href="about.html">about</a></li>
+                            <li><a href="{{url('/about')}}">about</a></li>
                             <li><a href="#">Events <span><i class="fas fa-angle-down"></i></span></a>
                                 <ul class="submenu">
                                     <li><a href="{{url('/events')}}">Event list</a></li>
