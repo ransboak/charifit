@@ -109,7 +109,7 @@
                                         <a href="#"><i class="fa fa-tag"></i>web design</a>
                                     </div>
                                     <div class="blog-author">
-                                        <a href="#"><i class="fa fa-user-circle"></i>{{$user->firstname}}</a>
+                                        <a href="#"><i class="fa fa-user-circle"></i>{{$blog->user->firstname}} {{$blog->user->lastname}}</a>
                                     </div>
                                 </div>
                                 <div class="blog-title">
@@ -147,7 +147,7 @@
                                         <a href="#"><i class="fa fa-tag"></i>web design</a>
                                     </div>
                                     <div class="blog-author">
-                                        <a href="#"><i class="fa fa-user-circle"></i>{{$user->firstname}}</a>
+                                        <a href="#"><i class="fa fa-user-circle"></i>{{$blog->user->firstname}} {{$blog->user->lastname}}</a>
                                     </div>
                                 </div>
                                 <div class="blog-title">

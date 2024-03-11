@@ -35,11 +35,9 @@ class PageController extends Controller
     //FRONTEND
     //BLOG PAGE
     public function blogPage(){
-        $blogs = DB::table('blogs')->latest()->paginate(2);
-        foreach($blogs as $blog){
-            $user = User::find($blog->author_id);
-        }
-        return view('frontend.pages.blog', compact('blogs', 'user'));
+        $blogs = Blog::where('author_id', '!=', null)->latest()->paginate(2);
+
+        return view('frontend.pages.blog', compact('blogs'));
     }
 
     //ABOUT US PAGE
