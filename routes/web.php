@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,8 @@ Route::get('/mission', [PageController::class, 'missionPage'])->name('mission');
 Route::get('/team', [PageController::class, 'teamPage'])->name('team');
 
 Route::get('/faqs', [PageController::class, 'faqsPage'])->name('faqs');
+
+Route::post('/donate', [DonationController::class, 'donate'])->name('donate');
 
 
 

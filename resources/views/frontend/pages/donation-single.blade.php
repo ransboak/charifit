@@ -84,7 +84,9 @@
                             <div class="form-right">
                                 <img src="{{asset('assets/images/hand-vector.png')}}" class="hand-vector" alt="">
                                 <h4>Personal information</h4>
-                                <form action="#">
+                                <form action="{{route('donate')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{$activity->id}}">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-input">
@@ -112,7 +114,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <div class="form-input">
-                                            <select name="s" class="currency">
+                                            <select name="currency" class="currency">
                                                 <option value="">Currency</option>
                                                 <option value="GHS">GHS</option>
                                                 <option value="USD">USD</option>
@@ -145,7 +147,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-textarea">
-                                                <textarea name="comments" rows="3" placeholder="Comments"></textarea>
+                                                <textarea name="remarks" rows="3" placeholder="Comments"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +173,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" name="s" class="call-to-action-btn" value="Donate">
+                                    <input type="submit" class="call-to-action-btn" value="Donate">
                                 </form>
                             </div>
                         </div>

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->string('donor');
+            $table->string('email');
+            $table->string('contact');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('activity_id');
             $table->string('currency')->default('GHS');
