@@ -2,10 +2,7 @@
 @section('content')
     <head>
         <!-- Plugins css -->
-        <!-- Summernote css -->
-        <link href="{{asset('assets1/libs/summernote/summernote-bs4.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets1/libs/dropify/dropify.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets3/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+
 
     </head>
 
@@ -55,9 +52,6 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="card-title">Example</h4>
-                                        <p class="card-title-desc">This is an experimental awesome solution for responsive tables with complex data.</p>
-
                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg" style="margin-bottom: 1rem">Create Blog Post</button>
 
                                         <div class="table-rep-plugin">
@@ -70,6 +64,7 @@
                                                     <th>Category</th>
                                                     <th>Video Link</th>
                                                     <th>Date</th>
+                                                    <th>Action</th>
                                                 </tr>
                                                 </thead>
 
@@ -91,7 +86,50 @@
                                                         @endif
                                                     </td>
                                                     <td>{{\Carbon\Carbon::parse($blog->created_at)->format('jS F, Y (H:i)')}}</td>
+                                                    <td><i class="bx bx-pencil" data-toggle="modal" data-target=".editModal{{$blog->id}}" style="color: blue"></i> <i class="bx bx-trash" style="color: red"></i></td>
                                                 </tr>
+
+                                                <div class="modal fade editModal{{$blog->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content" style="padding: 1rem">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title mt-0" id="myLargeModalLabel">Edit Blog</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form  action="{{route('addBlog')}}" class="modal-body" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <label>Title</label>
+                                                                     <input type="text" class="form-control" name="title" id="title" value="{{$blog->title}}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Category</label>
+                                                                        <select class="form-control" name="category" id="category">
+                                                                            <option >Select</option>
+                                                                            <option value="health" {{$blog->category == 'health' ? 'selected' : ''}}>Health</option>
+                                                                            <option value="family" {{$blog->category == 'family' ? 'selected' : ''}}>Family</option>
+                                                                        </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Thumbnail</label>
+                                                                    <input type="file" class="dropify" id="thumbnail" name="thumbnail"/>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Body</label>
+
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Video Link</label>
+                                                                    <input type="text" class="form-control" name="video_link" id="video_link" value="{{$blog->video_link}}">
+                                                                </div>
+
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light" >Create Post</button>
+                                                            </form>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                                 @endforeach
                                                 </tbody>
                                             </table>
@@ -150,6 +188,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+
             </div>
 
 
@@ -176,27 +215,28 @@
         <script src="{{asset('assets1/js/vendor.min.js')}}"></script>
 
 
-    <!-- Plugins js -->
-    <script src="{{asset('assets1/libs/dropify/dropify.min.js')}}"></script>
+        <!-- Plugins js -->
+        <script src="{{asset('assets1/libs/dropify/dropify.min.js')}}"></script>
 
-    <!-- Init js-->
-    <script src="{{asset('assets1/js/pages/form-fileuploads.init.js')}}"></script>
+        <!-- Init js-->
+        <script src="{{asset('assets1/js/pages/form-fileuploads.init.js')}}"></script>
 
-    <!-- Summernote js -->
-    <script src="{{asset('assets1/libs/summernote/summernote-bs4.min.js')}}"></script>
+        <!-- Summernote js -->
+        <script src="{{asset('assets1/libs/summernote/summernote-bs4.min.js')}}"></script>
 
-    <!-- email summernote init -->
-    <script src="{{asset('assets1/js/pages/email-summernote.init.js')}}"></script>
+        <!-- email summernote init -->
+        <script src="{{asset('assets1/js/pages/email-summernote.init.js')}}"></script>
 
-    <!-- App js -->
+        <!-- App js -->
+
 
 
 {{-- <script src="{{ asset('assets/js/app.js') }}"></script> --}}
 <script>
     $('#summernote').summernote({
-      placeholder: 'Hello Bootstrap 4',
+      placeholder: 'Body...',
       tabsize: 2,
-      height: 100
+      height: 200
     });
   </script>
  @endsection

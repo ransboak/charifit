@@ -10,8 +10,7 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets1/images/favicon.ico">
-        <!-- Summernote css -->
-        <link href="{{asset('assets1/libs/summernote/summernote-bs4.min.css')}}" rel="stylesheet" type="text/css" />
+
         <!-- Bootstrap Css -->
         <link href="{{asset('assets1/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -28,6 +27,16 @@
         <!-- Responsive datatable examples -->
         <link href="{{asset('assets1/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
+        <!-- Summernote css -->
+        <link href="{{asset('assets1/libs/summernote/summernote-bs4.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets1/libs/dropify/dropify.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets3/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+
+        <style>
+            i{
+                cursor: pointer;
+            }
+        </style>
 
     </head>
     <body data-sidebar="dark">
@@ -80,6 +89,7 @@
      <script src="{{asset('assets1/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
      <script src="{{asset('assets1/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
 
+
      <!-- Responsive examples -->
      <script src="{{asset('assets1/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
      <script src="{{asset('assets1/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
@@ -92,6 +102,7 @@
 
     <!-- App js -->
     <script src="{{asset('assets1/js/app.js')}}"></script>
+
 </body>
 
 </html>

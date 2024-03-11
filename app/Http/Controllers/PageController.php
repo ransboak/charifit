@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -23,7 +25,8 @@ class PageController extends Controller
 
     //SINGLE EVENT PAGE
     public function dashBlogsPage(){
-        $blogs = Blog::all();
+        $user = Auth::user()->id;
+        $blogs = Blog::where('author_id', $user)->get();
         return view('backend.pages.blog', compact('blogs'));
     }
 
@@ -32,8 +35,11 @@ class PageController extends Controller
     //FRONTEND
     //BLOG PAGE
     public function blogPage(){
-        $blogs = Blog::paginate(2);
-        return view('frontend.pages.blog', compact('blogs'));
+        $blogs = DB::table('blogs')->latest()->paginate(2);
+        foreach($blogs as $blog){
+            $user = User::find($blog->author_id);
+        }
+        return view('frontend.pages.blog', compact('blogs', 'user'));
     }
 
     //ABOUT US PAGE

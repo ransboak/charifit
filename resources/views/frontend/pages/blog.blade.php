@@ -3,12 +3,7 @@
 
 
 <head>
-<style>
-svg{
-    display: none
-}
 
-</style>
 </head>
     <!-- Breadcrumb Section -->
     <div class="breadcrumb blog-breadcrumb">
@@ -114,7 +109,7 @@ svg{
                                         <a href="#"><i class="fa fa-tag"></i>web design</a>
                                     </div>
                                     <div class="blog-author">
-                                        <a href="#"><i class="fa fa-user-circle"></i>{{$blog->user->firstname}} {{$blog->user->lastname}}</a>
+                                        <a href="#"><i class="fa fa-user-circle"></i>{{$user->firstname}}</a>
                                     </div>
                                 </div>
                                 <div class="blog-title">
@@ -126,7 +121,7 @@ svg{
                                     {!! substr($blog->body, 0, 2350) !!}...
                                 </div>
                                 <div class="blog-excerpt-link">
-                                    <a href="blog-single.html" class="readmore-btn">read more</a>
+                                    <a href="{{route('single-blog', ['id' => $blog->id])}}" class="readmore-btn">read more</a>
                                 </div>
                                 @else
                                 <div class="blog-content">
@@ -138,7 +133,7 @@ svg{
                         @else
                         <div class="blog-single-post">
                             <div class="blog-thumbnail">
-                                <a href="{{url('blog-single/'.$blog->id)}}"><img src="{{asset("uploads/$blog->thumbnail")}}" alt="thumbnail"></a>
+                                <a href="{{route('single-blog', ['id' => $blog->id])}}"><img src="{{asset("uploads/$blog->thumbnail")}}" alt="thumbnail"></a>
                                 <div class="img-shape-btn">
                                     <a href="#" class="img-top-btn">{{$blog->category}}</a>
                                 </div>
@@ -152,7 +147,7 @@ svg{
                                         <a href="#"><i class="fa fa-tag"></i>web design</a>
                                     </div>
                                     <div class="blog-author">
-                                        <a href="#"><i class="fa fa-user-circle"></i>{{$blog->user->firstname}} {{$blog->user->lastname}}</a>
+                                        <a href="#"><i class="fa fa-user-circle"></i>{{$user->firstname}}</a>
                                     </div>
                                 </div>
                                 <div class="blog-title">
@@ -164,7 +159,7 @@ svg{
                                     {!! substr($blog->body, 0, 2350) !!}...
                                 </div>
                                 <div class="blog-excerpt-link">
-                                    <a href="blog-single.html" class="readmore-btn">read more</a>
+                                    <a href="{{route('single-blog', ['id' => $blog->id])}}" class="readmore-btn">read more</a>
                                 </div>
                                 @else
                                 <div class="blog-content">

@@ -1,20 +1,20 @@
 <!-- Footer Section -->
 <footer class="about-footer vector-container footer-section">
-    <img src="assets/images/copyright-vector.png" class="copyright-vector" alt="">
-    <img src="assets/images/about-footer-vector.png" class="about-footer-vector" alt="">
+    <img src="{{asset('assets/images/copyright-vector.png')}}" class="copyright-vector" alt="">
+    <img src="{{asset('assets/images/about-footer-vector.png')}}" class="about-footer-vector" alt="">
     <div class="container vector-container">
-        <img src="assets/images/yellow-vector.png" class="yellow-vector" alt="">
-        <img src="assets/images/dot-vector.png" class="dot-vector" alt="">
-        <img src="assets/images/red-vector.png" class="red-vector" alt="">
+        <img src="{{asset('assets/images/yellow-vector.png')}}" class="yellow-vector" alt="">
+        <img src="{{asset('assets/images/dot-vector.png')}}" class="dot-vector" alt="">
+        <img src="{{asset('assets/images/red-vector.png')}}" class="red-vector" alt="">
         <div class="footer-top">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="subscribe-area">
-                        <img src="assets/images/footer-top-vector.png" class="subscription-vector" alt="">
+                        <img src="{{asset('assets/images/footer-top-vector.png')}}" class="subscription-vector" alt="">
                         <div class="hot-number">
                             <div class="left-logo">
                                 <div class="left-icon">
-                                    <span><img src="assets/images/icon-3.png" alt=""></span>
+                                    <span><img src="{{asset('assets/images/icon-3.png')}}" alt=""></span>
                                 </div>
                             </div>
                             <div class="number">
@@ -35,16 +35,16 @@
                         <span class="brand-title margin-bottom-30">sponsor Brands</span>
                         <div class="row brands-carousel">
                             <div class="text-center">
-                                <img src="assets/images/gifts.png" alt="">
+                                <img src="{{asset('assets/images/gifts.png')}}" alt="">
                             </div>
                             <div class="text-center">
-                                <img src="assets/images/love.png" alt="">
+                                <img src="{{asset('assets/images/love.png')}}" alt="">
                             </div>
                             <div class="text-center">
-                                <img src="assets/images/charity-logo.png" alt="">
+                                <img src="{{asset('assets/images/charity-logo.png')}}" alt="">
                             </div>
                             <div class="text-center">
-                                <img src="assets/images/charity-logo.png" alt="">
+                                <img src="{{asset('assets/images/charity-logo.png')}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -55,11 +55,11 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-first">
                     <a href="index.html">
-                        <img src="assets/images/logo.png" class="logo" alt="">
+                        <img src="{{asset('assets/images/logo.png')}}" class="logo" alt="">
                     </a>
                     <p>Lorem ipsum dolor sit ammet lorem ipsum dolor sit ammet lorem ipsum dolor sit ammet</p>
                     <div class="widget-bottom">
-                        <img src="assets/images/vector-09.png" alt="">
+                        <img src="{{asset('assets/images/vector-09.png')}}" alt="">
                         <div class="widget-content">
                             <h6>287 N Willow St. Trenton, NJ, 08618 (Unlisted).</h6>
                         </div>
@@ -99,7 +99,7 @@
                     <h3>Donation campaign</h3>
                     <div class="widget-bottom">
                         <a href="blog-single.html">
-                            <img src="assets/images/sidebar-blog-1.png" alt="">
+                            <img src="{{asset('assets/images/sidebar-blog-1.png')}}" alt="">
                         </a>
                         <div class="widget-content">
                             <a href="#">
@@ -110,7 +110,7 @@
                     </div>
                     <div class="widget-bottom">
                         <a href="blog-single.html">
-                            <img src="assets/images/sidebar-blog-2.png" alt="">
+                            <img src="{{asset('assets/images/sidebar-blog-2.png')}}" alt="">
                         </a>
                         <div class="widget-content">
                             <a href="#">

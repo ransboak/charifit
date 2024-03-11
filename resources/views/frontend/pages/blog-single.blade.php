@@ -46,25 +46,6 @@
 
                             </div>
 
-                            <div class="blog-images margin-top-30">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="single-image">
-                                            <img src="{{asset('assets/images/blog-single-1.png')}}" alt="image">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="single-image image-2">
-                                            <img src="{{asset('assets/images/blog-single-2.png')}}" alt="image">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
                             <div class="content-bottom margin-top-30">
                                 <div class="row">
                                     <div class="col-sm-12">
