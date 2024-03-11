@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -28,7 +29,7 @@ Route::get('/about', [PageController::class, 'aboutPage'])->name('about');
 
 Route::get('/donations', [PageController::class, 'donationsPage'])->name('donations');
 
-Route::get('/donation', [PageController::class, 'singleDonationPage'])->name('donation');
+Route::get('donation/{id}', [PageController::class, 'singleDonationPage'])->name('donation');
 
 Route::get('blog-single/{id}', [PageController::class, 'singleBlogPage'])->name('single-blog');
 
@@ -59,7 +60,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/dashboardblogs', [PageController::class, 'dashBlogsPage'])->name('dashBlogsPage');
+    Route::get('/dashboardDonations', [PageController::class, 'dashDonationsPage'])->name('dashDonationsPage');
     Route::post('/addBlog', [BlogController::class, 'addBlog'])->name('addBlog');
+    Route::post('/addActivity', [ActivityController::class, 'addActivity'])->name('addActivity');
 });
 
 require __DIR__.'/auth.php';

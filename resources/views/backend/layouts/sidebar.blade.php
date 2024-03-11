@@ -49,10 +49,10 @@
                 </li>
 
                 <li>
-                    <a href="chat.html" class=" waves-effect">
+                    <a href="{{route('dashDonationsPage')}}" class=" waves-effect">
                         <i class="bx bx-chat"></i>
                         <span class="badge badge-pill badge-success float-right">New</span>
-                        <span>Chat</span>
+                        <span>Donations</span>
                     </a>
                 </li>
 

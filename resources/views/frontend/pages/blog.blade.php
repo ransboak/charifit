@@ -134,7 +134,7 @@
                         <div class="blog-single-post">
                             <div class="blog-thumbnail">
                                 <a href="{{route('single-blog', ['id' => $blog->id])}}"><img src="{{asset("uploads/$blog->thumbnail")}}" alt="thumbnail"></a>
-                                <div class="img-shape-btn">
+                                <div class="img-shape-btn" style="z-index: -5">
                                     <a href="#" class="img-top-btn">{{$blog->category}}</a>
                                 </div>
                             </div>

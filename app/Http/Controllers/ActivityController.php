@@ -2,37 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
-use App\Models\User;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BlogController extends Controller
+class ActivityController extends Controller
 {
     //
-    public function addBlog(Request $request){
+    public function addActivity(Request $request){
         $request->validate([
             'title' => 'required',
-            'body' => 'required',
+            'description' => 'required',
+            'goal' => 'required',
             'thumbnail' => 'mimes:png,jpg,webp'
         ]);
 
         $thumbnail = time().'_1.'.$request->thumbnail->extension();
         $request->thumbnail->move(public_path('uploads'), $thumbnail);
 
-        $blog = Blog::create([
+        $activity = Activity::create([
             'title' => $request->title,
             'category' => $request->category,
-            'body' => $request->body,
+            'description' => $request->description,
             'user_id' => Auth::user()->id,
-            'video_link' => $request->video_link,
             'thumbnail' => $thumbnail,
+            'goal' => $request->goal,
+            'current' => 0,
         ]);
 
-        if($blog){
-            return redirect()->back()->with('success', 'Post added successfully.');
+        return $activity;
+
+        if($activity){
+            return redirect()->back()->with('success', 'Activity added successfully.');
         }else{
-            return redirect()->back()->with('error', 'Failed to create post!');
+            return redirect()->back()->with('error', 'Failed to create Activity!');
         }
     }
 }

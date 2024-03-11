@@ -20,153 +20,56 @@
         <div class="container">
             <div class="campaign-content">
                 <div class="row">
+
+                    @foreach ($activities as $activity)
+                    <?php
+                    $percent = round(($activity->current/$activity->goal) * 100)
+                    ?>
                     <div class="col-lg-4 col-md-6">
                         <div class="campaign-column">
-                            <a href="#"><span class="img-top-btn">Health</span></a>
+                            <a href="#"><span class="img-top-btn">{{$activity->category}}</span></a>
                             <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-1.png" alt=""></a>
+                                <a href="{{route('donation', ['id' => $activity->id])}}"><img src="{{asset("uploads/$activity->thumbnail")}}" alt=""></a>
                             </div>
                             <div class="padding-20">
                                 <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="50" data-color="#1f1f53">
-                                        <span>50%</span></div>
+                                    <div class="animated-progress" data-percent="{{$percent}}" data-color="#1f1f53">
+                                        <span>{{$percent}}%</span></div>
                                 </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Help children proverty and world safe environment</h3>
+                                <a href="{{route('donation', ['id' => $activity->id])}}">
+                                    <h3>{{$activity->title}}</h3>
                                 </a>
                                 <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
+                                    <span>Goal: GH₵
+                                        @if ($activity->goal < 1000)
+                                        {{$activity->goal}}
+                                    @elseif ($activity->goal < 1000000)
+                                    {{round($activity->goal/1000, 2) . 'K'}}
+                                    @else
+                                    {{round($activity->goal/1000000, 2) . 'M'}}
+                                    @endif
+                                    </span>
+                                    <span>Current: GH₵
+                                        @if ($activity->current < 1000)
+                                        {{$activity->current}}
+                                    @elseif ($activity->current < 1000000)
+                                    {{round($activity->current/1000, 2) . 'K'}}
+                                    @else
+                                    {{floor($activity->current/1000000, 2) . 'M'}}
+                                    @endif</span>
                                     <span>Donate: 50k</span>
                                 </div>
-                                <a href="{{url('/donation')}}" class="donate-btn">Donate</a>
+                                <a href="{{route('donation', ['id' => $activity->id])}}" class="donate-btn">Donate</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="campaign-column">
-                            <a href=""><span class="img-top-btn">Water</span></a>
-                            <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-2.png" alt=""></a>
-                            </div>
-                            <div class="padding-20">
-                                <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="70" data-color="#1f1f53">
-                                        <span>70%</span></div>
-                                </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Help children water pollution and human health</h3>
-                                </a>
-                                <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
-                                    <span>Donate: 50k</span>
-                                </div>
-                                <a href="{{url('/donation')}}" class="donate-btn">Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="campaign-column">
-                            <a href=""><span class="img-top-btn">Food</span></a>
-                            <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-3.png" alt=""></a>
-                            </div>
-                            <div class="padding-20">
-                                <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="85" data-color="#1f1f53">
-                                        <span>85%</span></div>
-                                </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Children are going hungry around the world</h3>
-                                </a>
-                                <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
-                                    <span>Donate: 50k</span>
-                                </div>
-                                <a href="{{url('/donation')}}" class="donate-btn">Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="campaign-column">
-                            <a href="#"><span class="img-top-btn">Education</span></a>
-                            <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-4.png" alt=""></a>
-                            </div>
-                            <div class="padding-20">
-                                <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="50" data-color="#1f1f53">
-                                        <span>50%</span></div>
-                                </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Help children proverty and world safe environment</h3>
-                                </a>
-                                <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
-                                    <span>Donate: 50k</span>
-                                </div>{{url('/donation')}}" class="donate-btn">Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="campaign-column">
-                            <a href="#"><span class="img-top-btn">Environment</span></a>
-                            <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-5.png" alt=""></a>
-                            </div>
-                            <div class="padding-20">
-                                <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="40" data-color="#1f1f53">
-                                        <span>40%</span></div>
-                                </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Help Children Water pollution and Human Health</h3>
-                                </a>
-                                <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
-                                    <span>Donate: 50k</span>
-                                </div>
-                                <a href="{{url('/donation')}}" class="donate-btn">Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="campaign-column">
-                            <a href="#"><span class="img-top-btn">Cloth</span></a>
-                            <div class="img-container">
-                                <a href="{{url('/donation')}}"><img src="assets/images/donation-list-6.png" alt=""></a>
-                            </div>
-                            <div class="padding-20">
-                                <div class="animated-progress-bar">
-                                    <div class="animated-progress" data-percent="60" data-color="#1f1f53">
-                                        <span>60%</span></div>
-                                </div>
-                                <a href="{{url('/donation')}}">
-                                    <h3>Children are going hungry around the world</h3>
-                                </a>
-                                <div class="campaign-column-bottom">
-                                    <span>Goal: 20000k</span>
-                                    <span>Need: 5000k</span>
-                                    <span>Donate: 50k</span>
-                                </div>
-                                <a href="{{url('/donation')}}" class="donate-btn">Donate</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                     <div class="col-md-12">
-                        <ul class="pagination">
-                            <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
-                            <li><a href="#" class="active">01</a></li>
-                            <li><a href="#">02</a></li>
-                            <li><a href="#">03</a></li>
-                            <li><a href="#">04</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
-                        </ul>
+
+                            {{$activities->links()}}
+
                     </div>
                 </div>
             </div>

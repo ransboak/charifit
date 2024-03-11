@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="breadcrumb-left">
-                    <img src="assets/images/slide-left.png" alt="">
+                    <img src="{{asset('assets/images/slide-left.png')}}" alt="">
                     <h1>Donation Single</h1>
                     <h3><a href="index.html">Home</a> - Donation Single</h3>
                 </div>
@@ -22,15 +22,15 @@
             <div class="col-lg-12">
                 <div class="post-slider">
                     <div class="single-slide">
-                        <img src="assets/images/single-post-img.png" alt="">
+                        <img src="{{asset("uploads/$activity->thumbnail")}}" alt="">
                         <a href="#" class="img-top-btn">Water</a>
                     </div>
                     <div class="single-slide">
-                        <img src="assets/images/single-post-img.png" alt="">
+                        <img src="{{asset("uploads/$activity->thumbnail")}}" alt="">
                         <a href="#" class="img-top-btn">Water</a>
                     </div>
                     <div class="single-slide">
-                        <img src="assets/images/single-post-img.png" alt="">
+                        <img src="{{asset("uploads/$activity->thumbnail")}}" alt="">
                         <a href="#" class="img-top-btn">Water</a>
                     </div>
                 </div>
@@ -38,31 +38,42 @@
         </div>
     </div>
 </div>
+<?php
+                    $percent = round(($activity->current/$activity->goal) * 100)
+                    ?>
 <section class="post-section padding-top-40">
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
                 <div class="main-content">
-                    <span class="title margin-bottom-25">Help Children water pollution and human health</span>
-                    <p>Water pollution occurs when harmful substances—often chemicals or microorganisms—contaminate
-                        a stream, river, lake, ocean, aquifer, or other body of water, degrading water quality and
-                        rendering it toxic to humans or the environment.</p>
-                    <p>This widespread problem of water pollution is jeopardizing our health. Unsafe water kills
-                        more people each year than war and all other forms of violence combined. Meanwhile, our
-                        drinkable water sources are finite: Less than 1 percent of the earth’s freshwater is
-                        actually accessible.</p>
+                    <span class="title margin-bottom-25">{{$activity->title}}</span>
+                    {!! $activity->description !!}
                     <div class="spacer"></div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="animated-progress-bar">
-                                <div class="animated-progress" data-percent="80" data-color="#1f1f53">
-                                    <span>80%</span></div>
+                                <div class="animated-progress" data-percent="{{$percent}}" data-color="#1f1f53">
+                                    <span>{{$percent}}%</span></div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="info">
-                                <span>Goal: 20000k</span>
-                                <span>Need: 5000k</span>
+                                <span>Goal:
+                                    @if ($activity->goal < 1000)
+                                        {{$activity->goal}}
+                                    @elseif ($activity->goal < 1000000)
+                                    {{round($activity->goal/1000, 2) . 'K'}}
+                                    @else
+                                    {{round($activity->goal/1000000, 2) . 'M'}}
+                                    @endif
+                                </span>
+                                <span>Need: @if ($activity->current < 1000)
+                                    {{$activity->current}}
+                                @elseif ($activity->current < 1000000)
+                                {{round($activity->current/1000, 2) . 'K'}}
+                                @else
+                                {{floor($activity->current/1000000, 2) . 'M'}}
+                                @endif</span>
                                 <span>Donate: 50k People</span>
                             </div>
                         </div>
@@ -71,41 +82,56 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-right">
-                                <img src="assets/images/hand-vector.png" class="hand-vector" alt="">
+                                <img src="{{asset('assets/images/hand-vector.png')}}" class="hand-vector" alt="">
                                 <h4>Personal information</h4>
                                 <form action="#">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="text" name="s" placeholder="First Name*" required>
+                                                <input type="text" name="firstname" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="text" name="s" placeholder="Last Name*" required>
+                                                <input type="text" name="lastname" placeholder="Last Name" >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="email" name="s" placeholder="Email*">
+                                                <input type="email" name="email" placeholder="Email*">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="tel" name="s" placeholder="Phone Number*">
+                                                <input type="tel" name="contact" placeholder="Phone Number*">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
+                                        <div class="form-input">
+                                            <select name="s" class="currency">
+                                                <option value="">Currency</option>
+                                                <option value="GHS">GHS</option>
+                                                <option value="USD">USD</option>
+                                                <option value="GBP">GBP</option>
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-input">
-                                                <span class="currency">USD</span>
-                                                <input type="text" name="s" placeholder="Amount*">
+                                                {{-- <span class="currency">USD</span> --}}
+                                                <input type="text" name="amount" placeholder="Amount*" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+                                            <div class="form-input">
+                                                <input type="hidden" name="type" readonly value={{$activity->category}} required >
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-md-6">
                                             <div class="form-input">
                                                 <select name="s">
                                                     <option value="">Type Of Donation*</option>
@@ -114,12 +140,12 @@
                                                     <option value="">Type three</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-textarea">
-                                                <textarea name="s" rows="3" placeholder="Comments"></textarea>
+                                                <textarea name="comments" rows="3" placeholder="Comments"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -130,16 +156,16 @@
                                                 <label>
                                                     <input type="radio" name="gateway" value="paypal"
                                                         checked="checked">
-                                                    <img src="assets/images/paypal.png" alt="" class="paypal-img">
+                                                    <img src="{{asset('assets/images/paypal.png')}}" alt="" class="paypal-img">
                                                 </label>
                                                 <label>
                                                     <input type="radio" name="gateway" value="payoneer">
-                                                    <img src="assets/images/payoneer.png" alt=""
+                                                    <img src="{{asset('assets/images/payoneer.png')}}" alt=""
                                                         class="payoneer-img">
                                                 </label>
                                                 <label>
                                                     <input type="radio" name="gateway" value="mastercard">
-                                                    <img src="assets/images/mastercard.png" alt=""
+                                                    <img src="{{asset('assets/images/mastercard.png')}}" alt=""
                                                         class="mastercard-img">
                                                 </label>
                                             </div>
@@ -170,7 +196,7 @@
                             <div class="widget-container blog-sidebar">
                                 <h4>Donation Campaign</h4>
                                 <div class="blog">
-                                    <img src="assets/images/sidebar-blog-1.png" alt="">
+                                    <img src="{{asset('assets/images/sidebar-blog-1.png')}}" alt="">
                                     <div class="blog-content">
                                         <a href="#">
                                             <h6>Give or Redeem Gift Cards</h6>
@@ -179,7 +205,7 @@
                                     </div>
                                 </div>
                                 <div class="blog">
-                                    <img src="assets/images/sidebar-blog-2.png" alt="">
+                                    <img src="{{asset('assets/images/sidebar-blog-2.png')}}" alt="">
                                     <div class="blog-content">
                                         <a href="#">
                                             <h6>Give or Redeem Gift Cards</h6>
@@ -188,7 +214,7 @@
                                     </div>
                                 </div>
                                 <div class="blog">
-                                    <img src="assets/images/sidebar-blog-2.png" alt="">
+                                    <img src="{{asset('assets/images/sidebar-blog-2.png')}}" alt="">
                                     <div class="blog-content">
                                         <a href="#">
                                             <h6>Give or Redeem Gift Cards</h6>
@@ -200,9 +226,9 @@
                         </div>
                         <div class="col-md-6 col-lg-12">
                             <div class="widget-container widget-banner">
-                                <img src="assets/images/sidebar-img.png" alt="">
+                                <img src="{{asset('assets/images/sidebar-img.png')}}" alt="">
                                 <div class="left-content">
-                                    <img src="assets/images/form-vector.png" alt="">
+                                    <img src="{{asset('assets/images/form-vector.png')}}" alt="">
                                     <h3>Join the Sympatho Team</h3>
                                     <a href="#" class="call-to-action-btn">Join Now</a>
                                 </div>

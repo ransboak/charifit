@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,8 +27,13 @@ class PageController extends Controller
     //SINGLE EVENT PAGE
     public function dashBlogsPage(){
         $user = Auth::user()->id;
-        $blogs = Blog::where('author_id', $user)->get();
+        $blogs = Blog::where('user_id', $user)->get();
         return view('backend.pages.blog', compact('blogs'));
+    }
+    public function dashDonationsPage(){
+        $user = Auth::user()->id;
+        $blogs = Blog::where('user_id', $user)->get();
+        return view('backend.pages.donations', compact('blogs'));
     }
 
 
@@ -35,7 +41,7 @@ class PageController extends Controller
     //FRONTEND
     //BLOG PAGE
     public function blogPage(){
-        $blogs = Blog::where('author_id', '!=', null)->latest()->paginate(2);
+        $blogs = Blog::where('user_id', '!=', null)->latest()->paginate(2);
 
         return view('frontend.pages.blog', compact('blogs'));
     }
@@ -47,12 +53,16 @@ class PageController extends Controller
 
     //DONATIONS PAGE
     public function donationsPage(){
-        return view('frontend.pages.donations');
+        $activities = DB::table('activities')->orderBy('created_at', 'desc')->paginate(3);
+
+
+        return view('frontend.pages.donations', compact('activities'));
     }
 
     //SINGLE DONATION PAGE
-    public function singleDonationPage(){
-        return view('frontend.pages.donation-single');
+    public function singleDonationPage($id){
+        $activity = Activity::find($id);
+        return view('frontend.pages.donation-single', compact('activity'));
     }
 
     //SINGLE BLOG PAGE

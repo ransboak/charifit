@@ -9,9 +9,9 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body', 'thumbnail', 'category', 'video_link', 'author_id'];
+    protected $fillable = ['title', 'body', 'thumbnail', 'category', 'video_link', 'user_id'];
 
     public function user(){
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
