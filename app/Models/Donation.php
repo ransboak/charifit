@@ -9,7 +9,7 @@ class Donation extends Model
 {
     use HasFactory;
 
-    protected $fillable =['donor', 'user_id', 'currency', 'amount', 'remarks', 'activity_id', 'payment_method'];
+    protected $fillable =['donor', 'user_id', 'contact', 'currency', 'amount', 'remarks', 'activity_id', 'payment_method'];
 
     public function activity(){
         return $this->belongsTo(Activity::class, 'activity_id');

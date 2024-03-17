@@ -3,7 +3,8 @@
 
 <?php
 use App\Models\Activity;
-$activities = Activity::all()->latest();
+use Illuminate\Support\Facades\DB;
+$activities = DB::table('activities')->orderBy('created_at', 'desc')->take(3)->get();
 ?>
 
 <!-- Breadcrumb -->
@@ -19,6 +20,27 @@ $activities = Activity::all()->latest();
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    @if (session('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{session('success')}}
+                                    </div>
+                                    @endif
+                                    @if (session('error'))
+                                    <div class="alert alert-warning" role="alert">
+                                        {{session('error')}}
+                                    </div>
+                                    @endif
+                                    @if ($errors->any())
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li><div class="alert alert-danger" role="alert">
+                                                {{$error}}
+                                            </div></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
 </div>
 
 <div class="single-post-slider padding-top-120">
@@ -91,11 +113,11 @@ $activities = Activity::all()->latest();
                                 <h4>Personal information</h4>
                                 <form action="{{route('donate')}}" method="POST">
                                     @csrf
-                                    <input type="hidden" value="{{$activity->id}}">
+                                    <input type="hidden" value="{{$activity->id}}" name="activity">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="text" name="firstname" placeholder="First Nam">
+                                                <input type="text" name="firstname" placeholder="First Name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -112,7 +134,7 @@ $activities = Activity::all()->latest();
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-input">
-                                                <input type="tel" name="contact" placeholder="Phone Number*">
+                                                <input type="text" name="contact" placeholder="Phone Number*">
                                             </div>
                                         </div>
                                     </div>
@@ -161,17 +183,17 @@ $activities = Activity::all()->latest();
                                             <div class="gateway-select">
                                                 <h4>Select payment method</h4>
                                                 <label>
-                                                    <input type="radio" name="gateway" value="paypal"
+                                                    <input type="radio" name="payment_method" value="paypal"
                                                         checked="checked">
                                                     <img src="{{asset('assets/images/paypal.png')}}" alt="" class="paypal-img">
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="gateway" value="payoneer">
+                                                    <input type="radio" name="payment_method" value="payoneer">
                                                     <img src="{{asset('assets/images/payoneer.png')}}" alt=""
                                                         class="payoneer-img">
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="gateway" value="mastercard">
+                                                    <input type="radio" name="payment_method" value="mastercard">
                                                     <img src="{{asset('assets/images/mastercard.png')}}" alt=""
                                                         class="mastercard-img">
                                                 </label>
@@ -202,24 +224,19 @@ $activities = Activity::all()->latest();
                         <div class="col-md-6 col-lg-12">
                             <div class="widget-container blog-sidebar">
                                 <h4>Donation Campaign</h4>
+                                @foreach ($activities as $activity )
                                 <div class="blog">
-                                    <img src="{{asset('assets/images/sidebar-blog-1.png')}}" alt="">
+                                    <img src="{{asset("uploads/$activity->thumbnail")}}" alt="">
                                     <div class="blog-content">
                                         <a href="#">
-                                            <h6>Give or Redeem Gift Cards</h6>
+                                            <h6>{{$activity->title}}</h6>
                                         </a>
-                                        <span><i class="fas fa-calendar"></i> 02Dec2020</span>
+                                        <span><i class="fas fa-calendar"></i> {{\Carbon\Carbon::parse($activity->created_at)->diffForHumans()}}</span>
                                     </div>
                                 </div>
-                                <div class="blog">
-                                    <img src="{{asset('assets/images/sidebar-blog-2.png')}}" alt="">
-                                    <div class="blog-content">
-                                        <a href="#">
-                                            <h6>Give or Redeem Gift Cards</h6>
-                                        </a>
-                                        <span><i class="fas fa-calendar"></i> 02Dec2020</span>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
 
                             </div>
                         </div>

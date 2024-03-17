@@ -5,6 +5,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Activity;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.pages.index');
+    $activities = DB::table('activities')->orderBy('created_at', 'desc')->take(3)->get();
+    return view('frontend.pages.index', compact('activities'));
 });
 
 Route::get('/home', [PageController::class, 'index'])->name('home');
@@ -30,7 +33,11 @@ Route::get('/about', [PageController::class, 'aboutPage'])->name('about');
 
 Route::get('/donations', [PageController::class, 'donationsPage'])->name('donations');
 
+Route::get('/donationss', [PageController::class, 'donationPage'])->name('donationss');
+
 Route::get('donation/{id}', [PageController::class, 'singleDonationPage'])->name('donation');
+
+Route::get('donationn/{id}', [PageController::class, 'singleDonationnPage'])->name('donationn');
 
 Route::get('blog-single/{id}', [PageController::class, 'singleBlogPage'])->name('single-blog');
 

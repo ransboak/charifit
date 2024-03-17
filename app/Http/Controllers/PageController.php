@@ -58,11 +58,21 @@ class PageController extends Controller
 
         return view('frontend.pages.donations', compact('activities'));
     }
+    public function donationPage(){
+        $activities = DB::table('activities')->orderBy('created_at', 'desc')->paginate(3);
+
+        return view('frontend.pages.donations_', compact('activities'));
+    }
 
     //SINGLE DONATION PAGE
     public function singleDonationPage($id){
         $activity = Activity::find($id);
         return view('frontend.pages.donation-single', compact('activity'));
+    }
+
+    public function singleDonationnPage($id){
+        $activity = Activity::find($id);
+        return view('frontend.pages.donations_single', compact('activity'));
     }
 
     //SINGLE BLOG PAGE
