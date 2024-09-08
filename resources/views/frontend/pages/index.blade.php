@@ -140,7 +140,7 @@
                         <div class="campaign-column">
                             <a href="{{route('donationn', ['id' => $activity->id])}}"><span class="img-top-btn">{{$activity->category}}</span></a>
                             <div class="img-container">
-                                <a href="{{route('donation', ['id' => $activity->id])}}"><img src="{{asset("uploads/$activity->thumbnail")}}" alt=""></a>
+                                <a href="{{route('donation', ['id' => $activity->id])}}"><img src="{{ Storage::url($activity->thumbnail) }}" alt=""></a>
                             </div>
                             <div class="padding-20">
                                 <div class="animated-progress-bar">
@@ -489,7 +489,7 @@
                             <div class="messonry-img" style="background-image: url('assets/images/grid-1.png');">
                                 <div class="describe">
                                     <div class="project-gallery">
-                                        <a href="assets/images/grid-1.png" alt="" class="p-gallery-img open-gallery"><i
+                                        <a href="assets/images/grid-1.png" alt="" class="p-gallery-img open-gallery" ><i
                                                 class="far fa-images"></i></a>
                                         <a href="assets/images/grid-2.png" alt="" class="p-gallery-img"></a>
                                         <a href="assets/images/grid-3.png" alt="" class="p-gallery-img"></a>

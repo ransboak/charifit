@@ -3,7 +3,7 @@
 
 <?php
 use App\Models\Activity;
-$activities = Activity::all()->latest();
+$activities = Activity::all();
 ?>
 
 <!-- Breadcrumb -->
